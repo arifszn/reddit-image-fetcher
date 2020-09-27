@@ -1,5 +1,5 @@
 <p><h1 align="center">Reddit Image Fetcher</h1></p>
-<p align="center">A javascript package for fetching bulk reddit memes, wallpapers and more.</p>
+<p align="center">A JavaScript package for fetching reddit memes, wallpapers and more.</p>
 
 <p align="center">
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
@@ -17,7 +17,7 @@ PHP package is available at <a href="https://packagist.org/packages/arifszn/redd
 
 ## Table of Contents
 
-* [Demo](#demo)
+* [Resources](#resources)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Result](#result)
@@ -25,10 +25,10 @@ PHP package is available at <a href="https://packagist.org/packages/arifszn/redd
 * [Support](#support)
 * [License](#license)
 
-## Demo
+## Resources
 
-<p>See the package is in action <a href="https://memewall.netlify.app">Here</a>.</p>
-<p>Try it on <a href="https://npm.runkit.com/reddit-image-fetcher">RunKit</a></p>
+- [Demo](https://memewall.netlify.app)
+- [Documentation](https://arifszn.github.io/reddit-image-fetcher)
 
 # Installation
 
@@ -57,14 +57,10 @@ await redditImageFetcher.getWallpapers(); //returns 1 wallpaper
 
 //use with callback
 redditImageFetcher.getMemes()
-.then(response => {
-  
-}); //returns 1 meme
+.then(response => { }); //returns 1 meme
 
 redditImageFetcher.getWallpapers()
-.then(response => {
-
-});//returns 1 wallpaper
+.then(response => { });//returns 1 wallpaper
 
 
 //options
@@ -77,7 +73,7 @@ await redditImageFetcher.getMemes({
 }); //returns 50 memes by filtering
 
 
-//can be use other than fetching memes and wallpapers
+//can be used other than fetching memes and wallpapers
 //use as cat image fetcher
 await redditImageFetcher.getMemes({ 
     total: 50, 
@@ -88,7 +84,7 @@ await redditImageFetcher.getMemes({
 
 ## Result
 
-The functions are asynchronous functions and return array.
+The functions are asynchronous and return array.
 ```
 [
   {
@@ -119,12 +115,12 @@ The functions are asynchronous functions and return array.
 
 ## Options
 
-| Property            |  Type   | Description                                     | Default |
-| :-----------        | :---:   | :-------------------------------------          | :----:  |
-| total               | int     | How many images to get. Max is 50.    | 1       |
-| addSubReddit        | array   | Add subreddits to subreddit library.            | [ ]     |
-| removeSubReddit     | array   | Remove subreddits from subreddit library.       | [ ]     |
-| removeAllSubReddit  | boolean | Remove all default subreddits from subreddit library.   | false   |
+| Property            |  Type   | Description                                               | Default |
+| :-----------        | :---:   | :-------------------------------------                    | :----:  |
+| total               | number  | How many images to get. Max is 50                         | 1       |
+| addSubReddit        | array   | Add subreddits to subreddit library                       | [ ]     |
+| removeSubReddit     | array   | Remove subreddits from subreddit library                  | [ ]     |
+| removeAllSubReddit  | boolean | Remove all default subreddits from subreddit library      | false   |
 
 ## Support
 

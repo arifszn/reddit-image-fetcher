@@ -1,13 +1,13 @@
 {
   "name": "reddit-image-fetcher",
-  "version": "1.1.1",
-  "description": "A javascript package for fetching bulk reddit memes, wallpapers and more.",
+  "version": "1.1.2",
+  "description": "A JavaScript package for fetching reddit memes, wallpapers and more",
   "main": "src/index.js",
   "typings": "./types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/arifszn/reddit-image-fetcher.git",
+  "homepage": "https://arifszn.github.io/reddit-image-fetcher",
   "keywords": [
     "reddit",
     "meme",

@@ -1,26 +1,34 @@
+// Type definitions for Reddit Image Fetcher
+// Project https://github.com/arifszn/reddit-image-fetcher
+// Author: Ariful Alam <swazan.arif@gmail.com>
 
 export interface RedditImageFetcherOptions {
     /**
      * How many images to get.
+     * 
      * Default: 1.
+     * 
      * Max: 50.
      */
-    total?: int;
+    total?: number;
 
     /**
      * Add subreddits to subreddit library.
+     * 
      * Default: [].
      */
-    addSubReddit?: array;
+    addSubReddit?: Array<string>;
 
     /**
      * Remove subreddits from subreddit library.
+     * 
      * Default: [].
      */
-    removeSubReddit?: array;
+    removeSubReddit?: Array<string>;
 
     /**
      * Remove all default subreddits from subreddit library.
+     * 
      * Default: false.
      */
     removeAllSubReddit?: boolean;
