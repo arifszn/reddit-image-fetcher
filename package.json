@@ -1,0 +1,37 @@
+{
+  "name": "reddit-image-fetcher",
+  "version": "1.0.1",
+  "description": "A javascript package for fetching bulk reddit memes, wallpapers and more.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "homepage": "https://github.com/arifszn/reddit-image-fetcher.git",
+  "keywords": [
+    "reddit",
+    "meme",
+    "wallpaper",
+    "wallpapers",
+    "random wallpaper",
+    "reddit wallpaper",
+    "random wallpapers",
+    "reddit wallpaper",
+    "random memes",
+    "random-meme",
+    "random-memes",
+    "reddit memes",
+    "subreddit",
+    "javascript meme",
+    "javascript wallpaper"
+  ],
+  "license": "MIT",
+  "author": "arifszn",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arifszn/reddit-image-fetcher.git"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "shuffle-array": "^1.0.1"
+  }
+}
