@@ -12,15 +12,13 @@ const maxRetryLimit = 50;
  */
 const getMemes = async (options = {}) => {
     try {
-        let   limit         = 1;
+        let   total         = 1;
         let   searchLimit   = 100;
         let   memeSubReddit  = config.memeSubreddit;
         
         if (typeof options === "object") {
             if (typeof options.total === "number" && options.total <= 50 && options.total > 0)
-                limit = options.total;
-            if (typeof options.searchLimit === "number" && options.searchLimit <= 100 && options.searchLimit > 0)
-                searchLimit = options.searchLimit;
+                total = options.total;
             if (typeof options.removeAllSubReddit === "boolean" && options.removeAllSubReddit === true)
                 memeSubReddit = [];
             if (typeof options.addSubReddit !== 'undefined' && Array.isArray(options.addSubReddit))
@@ -36,7 +34,7 @@ const getMemes = async (options = {}) => {
         if (!memeSubReddit.length) {
             memeSubReddit = config.memeSubreddit;
         }
-        return await getRandomPosts(parseInt(limit), 'meme', memeSubReddit, searchLimit);
+        return await getRandomPosts(parseInt(total), 'meme', memeSubReddit, searchLimit);
     } catch (error) {
         throw Error(error);
     }
@@ -50,15 +48,13 @@ const getMemes = async (options = {}) => {
  */
 const getWallpapers = async (options = {}) => {
     try {
-        let limit              = 1;
+        let total              = 1;
         let searchLimit        = 100;
         let wallpaperSubReddit = config.wallpaperSubreddit;
 
         if (typeof options === "object") {
             if (typeof options.total === "number" && options.total <= 50 && options.total > 0)
-                limit = options.total;
-            if (typeof options.searchLimit === "number" && options.searchLimit <= 100 && options.searchLimit > 0)
-                searchLimit = options.searchLimit;
+                total = options.total;
             if (typeof options.removeAllSubReddit === "boolean" && options.removeAllSubReddit === true)
                 wallpaperSubReddit = [];
             if (typeof options.addSubReddit !== 'undefined' && Array.isArray(options.addSubReddit))
@@ -74,23 +70,23 @@ const getWallpapers = async (options = {}) => {
         if (!wallpaperSubReddit.length) {
             wallpaperSubReddit = config.wallpaperSubreddit;
         }
-        return await getRandomPosts(parseInt(limit), 'wallpaper', wallpaperSubReddit, searchLimit);
+        return await getRandomPosts(parseInt(total), 'wallpaper', wallpaperSubReddit, searchLimit);
     } catch (error) {
         throw Error(error);
     }
 }
 
 /**
- * Get n random posts where n = limit
+ * Get n random posts where n = total
  * 
- * @param {number} limit 
+ * @param {number} total 
  * @param {String} type
  * @param {Array} subReddit 
  * @param {number} searchLimit 
  * @param {number} counter 
  * @param {Array} fetchedPost
  */
-const getRandomPosts = async (limit, type, subReddit, searchLimit, counter = 0, fetchedPost = []) => {
+const getRandomPosts = async (total, type, subReddit, searchLimit, counter = 0, fetchedPost = []) => {
     //retry limit check
     counter++;
     if (counter == maxRetryLimit)
@@ -101,7 +97,7 @@ const getRandomPosts = async (limit, type, subReddit, searchLimit, counter = 0, 
         var response = await utils.getRequest('https://api.reddit.com/r/' + subReddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
         //retry if error occurs
-        return await getRandomPosts(limit, type, subReddit, searchLimit, counter);
+        return await getRandomPosts(total, type, subReddit, searchLimit, counter);
     }
 
     //push image only post to post array
@@ -114,15 +110,15 @@ const getRandomPosts = async (limit, type, subReddit, searchLimit, counter = 0, 
             fetchedPost.push(utils.formatPost(post.data));
     });
 
-    //if limit is not reached, retry with already fetched data 
-    if (fetchedPost.length < limit)
-        fetchedPost = await getRandomPosts(limit, type, subReddit, searchLimit, counter, fetchedPost);
+    //if total is not reached, retry with already fetched data 
+    if (fetchedPost.length < total)
+        fetchedPost = await getRandomPosts(total, type, subReddit, searchLimit, counter, fetchedPost);
 
     //return result as array
-    if (limit === 1)
-        return [shuffle.pick(fetchedPost, { 'picks': limit })];
+    if (total === 1)
+        return [shuffle.pick(fetchedPost, { 'picks': total })];
 
-    return shuffle.pick(fetchedPost, { 'picks': limit });
+    return shuffle.pick(fetchedPost, { 'picks': total });
 }
 
 module.exports.getMemes = getMemes;
