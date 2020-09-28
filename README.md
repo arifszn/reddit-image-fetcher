@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://arifszn.github.io/reddit-image-fetcher" target="_blank"><img src="https://arifszn.github.io/reddit-image-fetcher/img/logo/logo.svg" alt="Reddit Image Fetcher" title="Reddit Image Fetcher" width="80"></a>
+  <a href="https://arifszn.github.io/reddit-image-fetcher" target="_blank"><img src="https://arifszn.github.io/reddit-image-fetcher/img/logo/logo.png" alt="Reddit Image Fetcher" title="Reddit Image Fetcher" width="80"></a>
 </p>
 <h1 align="center">Reddit Image Fetcher</h1>
 <p align="center">A JavaScript package for fetching reddit images, memes, wallpapers and more.</p>
