@@ -28,12 +28,14 @@ const fetch = async (options = {}) => {
         }
 
         if (typeof options === "object") {
-            if (options.total > 50) {
-                throw Error('max value of total is 50');
-            } else if (options.total < 1) {
-                throw Error('min value of total is 1');
-            } else {
-                total = options.total;
+            if (typeof options.total !== 'undefined') {
+                if (options.total > 50) {
+                    throw Error('max value of total is 50');
+                } else if (options.total < 1) {
+                    throw Error('min value of total is 1');
+                } else {
+                    total = options.total;
+                }
             }
 
             if (typeof options.addSubreddit !== 'undefined') {
@@ -55,7 +57,7 @@ const fetch = async (options = {}) => {
         if (!subreddit.length) {
             throw Error('Can not fetch from empty subreddit library');
         }
-        console.log(subreddit.length);
+        
         return await getRandomPosts(parseInt(total), type, subreddit, searchLimit);
     } catch (error) {
         throw Error(error);
