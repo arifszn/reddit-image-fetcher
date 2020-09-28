@@ -1,76 +1,62 @@
-const shuffle   = require('shuffle-array');
-const utils     = require('./utils');
-var config  = require('./../config/index');
+const shuffle = require('shuffle-array');
+const utils = require('./utils');
+var config = require('./../config/index');
 
 const maxRetryLimit = 50;
 
 /**
- * Get memes
+ * Fetch images.
  * 
- * @param {Object} options | optional. 
- * @return {Array} array of memes
+ * @param {Object} options The default options for the instance
+ * @return {Array} array of images
  */
-const getMemes = async (options = {}) => {
+const fetch = async (options = {}) => {
     try {
-        let   total         = 1;
-        let   searchLimit   = 100;
-        let   memeSubReddit  = config.memeSubreddit;
-        
+        let searchLimit = 75;
+        let total = 1;
+        let type = 'meme';
+        let subreddit = config.memeSubreddit;
+
+        if (typeof options === "object" && typeof options.type !== 'undefined') {
+            if (options.type === 'wallpaper') {
+                type = 'wallpaper';
+                subreddit = config.wallpaperSubreddit;
+            } else if (options.type === 'custom') {
+                type = 'custom';
+                subreddit = [];
+            }
+        }
+
         if (typeof options === "object") {
-            if (typeof options.total === "number" && options.total <= 50 && options.total > 0)
+            if (options.total > 50) {
+                throw Error('max value of total is 50');
+            } else if (options.total < 1) {
+                throw Error('min value of total is 1');
+            } else {
                 total = options.total;
-            if (typeof options.removeAllSubReddit === "boolean" && options.removeAllSubReddit === true)
-                memeSubReddit = [];
-            if (typeof options.addSubReddit !== 'undefined' && Array.isArray(options.addSubReddit))
-                memeSubReddit = memeSubReddit.concat(options.addSubReddit);
-            if (typeof options.removeSubReddit !== 'undefined' && Array.isArray(options.removeSubReddit)) {
-                options.removeSubReddit.forEach(element => {
-                    let index = memeSubReddit.indexOf(element);
-                    if (index !== -1) memeSubReddit.splice(index, 1);
+            }
+
+            if (typeof options.addSubreddit !== 'undefined') {
+                subreddit = subreddit.concat(options.addSubreddit);
+            }
+
+            if (typeof options.removeSubreddit !== 'undefined') {
+                options.removeSubreddit.forEach(element => {
+                    let index = subreddit.indexOf(element);
+                    if (index !== -1) subreddit.splice(index, 1);
                 });
+            }
+
+            if (type === 'custom' && typeof options.subreddit !== 'undefined') {
+                subreddit = options.subreddit;
             }
         }
         
-        if (!memeSubReddit.length) {
-            memeSubReddit = config.memeSubreddit;
+        if (!subreddit.length) {
+            throw Error('Can not fetch from empty subreddit library');
         }
-        return await getRandomPosts(parseInt(total), 'meme', memeSubReddit, searchLimit);
-    } catch (error) {
-        throw Error(error);
-    }
-}
-
-/**
- * Get wallpapers
- * 
- * @param {Object} options | optional. 
- * @return {Array} array of wallpapers
- */
-const getWallpapers = async (options = {}) => {
-    try {
-        let total              = 1;
-        let searchLimit        = 100;
-        let wallpaperSubReddit = config.wallpaperSubreddit;
-
-        if (typeof options === "object") {
-            if (typeof options.total === "number" && options.total <= 50 && options.total > 0)
-                total = options.total;
-            if (typeof options.removeAllSubReddit === "boolean" && options.removeAllSubReddit === true)
-                wallpaperSubReddit = [];
-            if (typeof options.addSubReddit !== 'undefined' && Array.isArray(options.addSubReddit))
-                wallpaperSubReddit = wallpaperSubReddit.concat(options.addSubReddit);
-            if (typeof options.removeSubReddit !== 'undefined' && Array.isArray(options.removeSubReddit)) {
-                options.removeSubReddit.forEach(element => {
-                    let index = wallpaperSubReddit.indexOf(element);
-                    if (index !== -1) wallpaperSubReddit.splice(index, 1);
-                });
-            }
-        }
-        
-        if (!wallpaperSubReddit.length) {
-            wallpaperSubReddit = config.wallpaperSubreddit;
-        }
-        return await getRandomPosts(parseInt(total), 'wallpaper', wallpaperSubReddit, searchLimit);
+        console.log(subreddit.length);
+        return await getRandomPosts(parseInt(total), type, subreddit, searchLimit);
     } catch (error) {
         throw Error(error);
     }
@@ -81,23 +67,23 @@ const getWallpapers = async (options = {}) => {
  * 
  * @param {number} total 
  * @param {String} type
- * @param {Array} subReddit 
+ * @param {Array} subreddit 
  * @param {number} searchLimit 
  * @param {number} counter 
  * @param {Array} fetchedPost
  */
-const getRandomPosts = async (total, type, subReddit, searchLimit, counter = 0, fetchedPost = []) => {
+const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, fetchedPost = []) => {
     //retry limit check
     counter++;
     if (counter == maxRetryLimit)
         throw Error('Maximum retry limit exceeded');
     try {
         //get request
-        let rand     = utils.randomNumber(0, subReddit.length);
-        var response = await utils.getRequest('https://api.reddit.com/r/' + subReddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
+        let rand     = utils.randomNumber(0, subreddit.length);
+        var response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
         //retry if error occurs
-        return await getRandomPosts(total, type, subReddit, searchLimit, counter);
+        return await getRandomPosts(total, type, subreddit, searchLimit, counter);
     }
 
     //push image only post to post array
@@ -107,12 +93,12 @@ const getRandomPosts = async (total, type, subReddit, searchLimit, counter = 0, 
         if (type === 'wallpaper')
             includeGif = false;
         if (typeof post.data !== "undefined" && typeof post.data.url !== "undefined" && utils.isImageUrl(post.data.url, includeGif))
-            fetchedPost.push(utils.formatPost(post.data));
+            fetchedPost.push(utils.formatPost(post.data, type));
     });
 
     //if total is not reached, retry with already fetched data 
     if (fetchedPost.length < total)
-        fetchedPost = await getRandomPosts(total, type, subReddit, searchLimit, counter, fetchedPost);
+        fetchedPost = await getRandomPosts(total, type, subreddit, searchLimit, counter, fetchedPost);
 
     //return result as array
     if (total === 1)
@@ -121,5 +107,4 @@ const getRandomPosts = async (total, type, subReddit, searchLimit, counter = 0, 
     return shuffle.pick(fetchedPost, { 'picks': total });
 }
 
-module.exports.getMemes = getMemes;
-module.exports.getWallpapers = getWallpapers;
+module.exports.fetch = fetch;

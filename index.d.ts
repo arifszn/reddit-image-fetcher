@@ -2,49 +2,55 @@
 // Project https://github.com/arifszn/reddit-image-fetcher
 // Author: Ariful Alam <swazan.arif@gmail.com>
 
+export type type = 'meme' | 'wallpaper' | 'custom';
+
 export interface RedditImageFetcherOptions {
+    /**
+     * Image type.
+     * 
+     * Default: 'meme'
+     */
+    type?: type;
+
     /**
      * How many images to get.
      * 
-     * Default: 1.
+     * Default: 1
      * 
-     * Max: 50.
+     * Max: 50
      */
     total?: number;
 
     /**
      * Add subreddits to subreddit library.
      * 
-     * Default: [].
+     * Default: [ ]
      */
-    addSubReddit?: Array<string>;
+    addSubreddit?: Array<string>;
 
     /**
      * Remove subreddits from subreddit library.
      * 
-     * Default: [].
+     * Default: [ ]
      */
-    removeSubReddit?: Array<string>;
+    removeSubreddit?: Array<string>;
 
     /**
-     * Remove all default subreddits from subreddit library.
+     * Custom subreddit libray when type is 'custom'.
      * 
-     * Default: false.
+     * Default: [ ]
      */
-    removeAllSubReddit?: boolean;
-
+    subreddit?: Array<string>;
 }
 
 export interface RedditImageFetcher {
     /**
-     * Returns array of memes.
+     * Fetch images.
+     * 
+     * @param {Object} options The default options for the instance
+     * @return {Array} array of images
      */
-    getMemes<T = any, R = Array<T>>(options?: RedditImageFetcherOptions): Promise<R>;
-
-    /**
-     * Returns array of wallpapers.
-     */
-    getWallpapers<T = any, R = Array<T>>(options?: RedditImageFetcherOptions): Promise<R>;
+    fetch<T = any, R = Array<T>>(options?: RedditImageFetcherOptions): Promise<R>;
 }
 
 declare const RedditImageFetcher: RedditImageFetcher;

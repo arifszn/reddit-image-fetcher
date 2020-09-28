@@ -1,5 +1,8 @@
-<p><h1 align="center">Reddit Image Fetcher</h1></p>
-<p align="center">A JavaScript package for fetching reddit memes, wallpapers and more.</p>
+<p align="center">
+  <a href="https://arifszn.github.io/reddit-image-fetcher" target="_blank"><img src="https://arifszn.github.io/reddit-image-fetcher/img/logo/logo.svg" alt="Reddit Image Fetcher" title="Reddit Image Fetcher" width="80"></a>
+</p>
+<h1 align="center">Reddit Image Fetcher</h1>
+<p align="center">A JavaScript package for fetching reddit images, memes, wallpapers and more.</p>
 
 <p align="center">
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
@@ -8,12 +11,13 @@
     <a href="https://arifszn.github.io/"><img src="https://img.shields.io/badge/maintainer-arifszn-informational" alt="Maintainer arifszn"/></a>
 </p>
 
+- Bulk images
 - Bulk memes
 - Bulk wallpapers
 - Customizable
 - Lightweight <small><code><20KB</code></small>
 
-PHP package is available at <a href="https://packagist.org/packages/arifszn/reddit-image-fetcher">Packagist</a>.
+PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddit Image Fetcher</a>
 
 ## Table of Contents
 
@@ -44,41 +48,37 @@ yarn add reddit-image-fetcher
 
 ## Usage
 
-Available functions:
-- getMemes()
-- getWallpapers()
+Available function:
+- fetch()
 
 ```js
 
 //use with await
-await redditImageFetcher.getMemes(); //returns 1 meme 
-await redditImageFetcher.getWallpapers(); //returns 1 wallpaper
+await redditImageFetcher.fetch({type: 'meme'}); //returns 1 meme 
+await redditImageFetcher.fetch({type: 'wallpaper'}); //returns 1 wallpaper
 
 
 //use with callback
-redditImageFetcher.getMemes()
-.then(response => { }); //returns 1 meme
-
-redditImageFetcher.getWallpapers()
-.then(response => { });//returns 1 wallpaper
+redditImageFetcher.fetch({type: 'meme'})
+.then(result => { }); //returns 1 meme
 
 
 //options
-await redditImageFetcher.getWallpapers({ total: 50 }); //returns 50 wallpapers 
+await redditImageFetcher.fetch({ type: 'wallpaper', total: 50 }); //returns 50 wallpapers 
  
-await redditImageFetcher.getMemes({ 
+await redditImageFetcher.fetch({
+    type: 'meme',
     total: 50, 
-    addSubReddit: ['memes', 'funny'], 
-    removeSubReddit: ['dankmemes'] 
+    addSubreddit: ['memes', 'funny'], 
+    removeSubreddit: ['dankmemes']
 }); //returns 50 memes by filtering
 
 
-//can be used other than fetching memes and wallpapers
-//use as cat image fetcher
-await redditImageFetcher.getMemes({ 
+//custom image fetch from defined subreddits
+await redditImageFetcher.fetch({
+    type: 'custom',
     total: 50, 
-    removeAllSubReddit: true, 
-    addSubReddit: ['cats', 'Catswhoyell', 'sleepingcats'] 
+    subreddit: ['cats', 'Catswhoyell', 'sleepingcats'] 
 }); //returns 50 cat images
 ```
 
@@ -89,6 +89,7 @@ The functions are asynchronous and return array.
 [
   {
     id: "hfh51v",
+    type: "wallpaper",
     title: "Illuminated City at Night [1920 x 1200]",
     postLink: "https://redd.it/hfh51v",
     image: "https://i.redd.it/b6x9i2n830751.jpg",
@@ -101,6 +102,7 @@ The functions are asynchronous and return array.
   },
   {
     id: "h9glhi",
+    type: "wallpaper",
     title: "Missing Home by Just Jaker",
     postLink: "https://redd.it/h9glhi",
     image: "https://cdnb.artstation.com/p/assets/images/images/027/020/665/large/just-jaker-galax-noise.jpg",
@@ -117,10 +119,11 @@ The functions are asynchronous and return array.
 
 | Property            |  Type   | Description                                               | Default |
 | :-----------        | :---:   | :-------------------------------------                    | :----:  |
+| type               | string  | meme, wallpaper or custom image to fetch                         | 'meme'       |
 | total               | number  | How many images to get. Max is 50                         | 1       |
-| addSubReddit        | array   | Add subreddits to subreddit library                       | [ ]     |
-| removeSubReddit     | array   | Remove subreddits from subreddit library                  | [ ]     |
-| removeAllSubReddit  | boolean | Remove all default subreddits from subreddit library      | false   |
+| subreddit        | [string]   | Custom subreddit libray                    |   [ ]   |
+| addSubreddit        | [string]   | Add subreddits to subreddit library                    | [ ]     |
+| removeSubreddit     | [string]   | Remove subreddits from subreddit library               | [ ]     |
 
 ## Support
 

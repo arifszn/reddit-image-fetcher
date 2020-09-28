@@ -45,11 +45,13 @@ const getRequest = async (url) => {
  * Format the raw post
  * 
  * @param {Object} post
+ * @param {string} type
  * @return {Object} formatted post
  */
-const formatPost = (post) => {
+const formatPost = (post, type) => {
     return {
         id        : typeof post.id !== 'undefined' ? post.id : null,
+        type      : type,
         title     : typeof post.title !== 'undefined' ? post.title : null,
         postLink  : typeof post.id !== 'undefined' ?  'https://redd.it/' + post.id : null,
         image     : typeof post.url !== 'undefined' ? post.url : null,
