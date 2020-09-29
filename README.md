@@ -3,6 +3,7 @@
 </p>
 <h1 align="center">Reddit Image Fetcher</h1>
 <p align="center">A JavaScript package for fetching reddit images, memes, wallpapers and more.</p>
+<p align="center">https://arifszn.github.io/reddit-image-fetcher</p>
 
 <p align="center">
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
@@ -74,7 +75,7 @@ await redditImageFetcher.fetch({
 }); //returns 50 memes by filtering
 
 
-//custom image fetch from defined subreddits
+//custom image fetch from given subreddits
 await redditImageFetcher.fetch({
     type: 'custom',
     total: 50, 
