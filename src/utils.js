@@ -46,7 +46,7 @@ const getRequest = async (url) => {
  * 
  * @param {Object} post
  * @param {string} type
- * @return {Object} formatted post
+ * @return {Object} formatted posts
  */
 const formatPost = (post, type) => {
     return {
