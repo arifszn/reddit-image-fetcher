@@ -51,7 +51,6 @@ var wallpaperSubreddit = [
     'wallpaper',
     'wallpapers',
     'iWallpaper',
-    'Rainmeter',
     'earthporn',
     'SkyPorn',
     'Beachporn',
