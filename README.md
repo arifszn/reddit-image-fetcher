@@ -99,7 +99,9 @@ The functions are asynchronous and return array.
     NSFW: false,
     spoiler: false,
     createdUtc: 1593066557,
-    
+    upvotes: 1899,
+    downvotes: 0,
+    upvoteRatio: 1.0
   },
   {
     id: "h9glhi",
@@ -111,7 +113,10 @@ The functions are asynchronous and return array.
     subreddit: "ImaginaryFuturism",
     NSFW: false,
     spoiler: false,
-    createdUtc: 1592228591
+    createdUtc: 1592228591,
+    upvotes: 462,
+    downvotes: 0,
+    upvoteRatio: 1.0
   }
 ]
 ```
