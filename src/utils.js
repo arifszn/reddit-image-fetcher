@@ -61,7 +61,6 @@ const formatPost = (post, type) => {
         spoiler         : typeof post.spoiler !== 'undefined' ? post.spoiler : null,
         createdUtc      : typeof post.created_utc !== 'undefined' ? post.created_utc : null,
         upvotes         : typeof post.ups !== 'undefined' ? post.ups : null,
-        downvotes       : typeof post.downs !== 'undefined' ? post.downs : null,
         upvoteRatio     : typeof post.upvote_ratio !== 'undefined' ? post.upvote_ratio : null,
     };
 }
