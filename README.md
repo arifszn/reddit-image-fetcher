@@ -100,7 +100,6 @@ The functions are asynchronous and return array.
     spoiler: false,
     createdUtc: 1593066557,
     upvotes: 1899,
-    downvotes: 0,
     upvoteRatio: 1.0
   },
   {
@@ -115,7 +114,6 @@ The functions are asynchronous and return array.
     spoiler: false,
     createdUtc: 1592228591,
     upvotes: 462,
-    downvotes: 0,
     upvoteRatio: 1.0
   }
 ]
