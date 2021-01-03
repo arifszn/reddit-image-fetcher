@@ -25,7 +25,6 @@ var memeSubreddit = [
     'trippinthroughtime',
     'boottoobig',
     'HistoryMemes',
-    'fakehistoryporn',
     'OTMemes',
     'starterpacks',
     'gifs',
