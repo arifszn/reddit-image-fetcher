@@ -27,7 +27,7 @@
     "url": "https://github.com/arifszn/reddit-image-fetcher.git"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "shuffle-array": "^1.0.1"
   }
 }
