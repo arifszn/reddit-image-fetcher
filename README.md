@@ -12,6 +12,14 @@
     <a href="https://arifszn.github.io/"><img src="https://img.shields.io/badge/maintainer-arifszn-informational" alt="Maintainer arifszn"/></a>
 </p>
 
+<p align="center">
+  <a href="https://arifszn.github.io/reddit-image-fetcher">
+    <img src="https://arifszn.github.io/reddit-image-fetcher/img/preview.gif" width="60%"/>
+  </a>
+  <br/>
+  <a href="#arifszn"><img src="https://arifszn.github.io/assets/img/drop-shadow.png" width="60%"/></a>
+</p>
+
 - Bulk images
 - Bulk memes
 - Bulk wallpapers
@@ -20,6 +28,7 @@
 
 PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddit Image Fetcher</a>
 
+
 ## Table of Contents
 
 * [Resources](#resources)
@@ -27,13 +36,17 @@ PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddi
 * [Usage](#usage)
 * [Result](#result)
 * [Options](#options)
+* [Contribute](#contribute)
+* [Supporters](#supporters)
 * [Support](#support)
 * [License](#license)
+
 
 ## Resources
 
 - [Demo](https://memedb.netlify.app)
 - [Documentation](https://arifszn.github.io/reddit-image-fetcher)
+
 
 # Installation
 
@@ -46,6 +59,7 @@ Install via <a href="https://yarnpkg.com/package/reddit-image-fetcher">Yarn</a>
 ```
 yarn add reddit-image-fetcher
 ```
+
 
 ## Usage
 
@@ -83,6 +97,7 @@ await redditImageFetcher.fetch({
 }); //returns 50 cat images
 ```
 
+
 ## Result
 
 The functions are asynchronous and return array.
@@ -119,6 +134,7 @@ The functions are asynchronous and return array.
 ]
 ```
 
+
 ## Options
 
 | Property            |  Type   | Description                                               | Default |
@@ -129,9 +145,21 @@ The functions are asynchronous and return array.
 | addSubreddit        | [string]   | Add subreddits to subreddit library                    | [ ]     |
 | removeSubreddit     | [string]   | Remove subreddits from subreddit library               | [ ]     |
 
+
+## Contribute
+
+To contribute, clone this repo locally and commit your code on a new branch. Feel free to create an issue or make a pull request.
+
+
+## Supporters
+
+[![Stargazers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/stars/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/stargazers)
+[![Forkers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/forks/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/network/members)
+
 ## Support
 
-Show your ❤️ and support by giving a ⭐ on <a href="https://github.com/arifszn/reddit-image-fetcher">Github</a>.
+Show your ❤️ and support by giving a <a href="https://github.com/arifszn/reddit-image-fetcher">star</a>.
+
 
 ## License
 
