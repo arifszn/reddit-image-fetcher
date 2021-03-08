@@ -39,7 +39,7 @@ PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddi
 * [Result](#result)
 * [Options](#options)
 * [Contribute](#contribute)
-* [Supporters](#supporters)
+* [Thank You](#thank-you)
 * [Support](#support)
 * [License](#license)
 
@@ -153,7 +153,7 @@ The functions are asynchronous and return array.
 To contribute, clone this repo locally and commit your code on a new branch. Feel free to create an issue or make a pull request.
 
 
-## Supporters
+## Thank You
 
 [![Stargazers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/stars/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/stargazers)
 [![Forkers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/forks/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/network/members)
