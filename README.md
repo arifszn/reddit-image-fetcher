@@ -1,6 +1,9 @@
 <p align="center">
-  <a href="https://arifszn.github.io/reddit-image-fetcher" target="_blank"><img src="https://arifszn.github.io/reddit-image-fetcher/img/logo/logo.png" alt="Reddit Image Fetcher" title="Reddit Image Fetcher" width="80"></a>
+  <a href="https://arifszn.github.io/reddit-image-fetcher" target="_blank">
+    <img src="https://arifszn.github.io/reddit-image-fetcher/img/logo/logo.png" alt="Reddit Image Fetcher" title="Reddit Image Fetcher" width="80">
+  </a>
 </p>
+
 <h1 align="center">Reddit Image Fetcher</h1>
 <p align="center">A JavaScript package for fetching reddit images, memes, wallpapers and more.</p>
 <p align="center"><a href="https://arifszn.github.io/reddit-image-fetcher">https://arifszn.github.io/reddit-image-fetcher</a></p>
@@ -9,15 +12,17 @@
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
     <img src="https://img.shields.io/bundlephobia/min/reddit-image-fetcher"/>
     <a href="https://github.com/arifszn/reddit-image-fetcher/blob/master/LICENSE"><img src="https://img.shields.io/github/license/arifszn/reddit-image-fetcher"/></a>
-    <a href="https://arifszn.github.io/"><img src="https://img.shields.io/badge/maintainer-arifszn-blueviolet" alt="Maintainer arifszn"/></a>
+    <a href="https://arifszn.github.io/"><img src="https://img.shields.io/badge/author-arifszn-blueviolet" alt="Author arifszn"/></a>
 </p>
+
+<br/>
 
 <p align="center">
   <a href="https://arifszn.github.io/reddit-image-fetcher">
-    <img src="https://arifszn.github.io/reddit-image-fetcher/img/preview.gif" width="60%"/>
+    <img src="https://arifszn.github.io/reddit-image-fetcher/img/preview.gif" width="60%" alt="Preview"/>
   </a>
   <br/>
-  <a href="#arifszn"><img src="https://arifszn.github.io/assets/img/drop-shadow.png" width="60%"/></a>
+  <a href="#arifszn"><img src="https://arifszn.github.io/assets/img/drop-shadow.png" width="60%" alt="Shadow"/></a>
 </p>
 
 Reddit Image Fetcher is a JavaScript package that can fetch bulk images, memes or wallpapers. Supports node, react and other any JavaScript language.
@@ -54,7 +59,7 @@ PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddi
 
 Install via <a href="https://www.npmjs.com/package/reddit-image-fetcher">NPM</a>
 ```
-npm install --save reddit-image-fetcher
+npm install reddit-image-fetcher
 ```
 
 Install via <a href="https://yarnpkg.com/package/reddit-image-fetcher">Yarn</a>
@@ -166,4 +171,4 @@ Show your ❤️ and support by giving a <a href="https://github.com/arifszn/red
 ## License
 
 <p>MIT Licensed.</p>
-<p>Copyright © <a href="https://arifszn.github.io">MD. Ariful Alam</a> 2020.</p>
+<p>Copyright © <a href="https://arifszn.github.io">MD. Ariful Alam</a> 2021.</p>
