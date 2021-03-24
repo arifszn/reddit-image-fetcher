@@ -66,6 +66,6 @@ const formatPost = (post, type) => {
 }
 
 module.exports.randomNumber = randomNumber;
-module.exports.isImageUrl   = isImageUrl;
-module.exports.getRequest   = getRequest;
-module.exports.formatPost   = formatPost;
+module.exports.isImageUrl = isImageUrl;
+module.exports.getRequest = getRequest;
+module.exports.formatPost = formatPost;

@@ -80,6 +80,6 @@ var wallpaperSubreddit = [
     'wallpaperengine'
 ];
 
-module.exports.searchType         = searchType;
-module.exports.memeSubreddit      = memeSubreddit;
+module.exports.searchType = searchType;
+module.exports.memeSubreddit = memeSubreddit;
 module.exports.wallpaperSubreddit = wallpaperSubreddit;

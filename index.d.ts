@@ -6,14 +6,14 @@ export type type = 'meme' | 'wallpaper' | 'custom';
 
 export interface RedditImageFetcherOptions {
     /**
-     * Image type.
+     * Image type
      * 
      * Default: 'meme'
      */
     type?: type;
 
     /**
-     * How many images to get.
+     * How many images to get
      * 
      * Default: 1
      * 
@@ -22,21 +22,21 @@ export interface RedditImageFetcherOptions {
     total?: number;
 
     /**
-     * Add subreddits to subreddit library.
+     * Add subreddits to subreddit library
      * 
      * Default: [ ]
      */
     addSubreddit?: Array<string>;
 
     /**
-     * Remove subreddits from subreddit library.
+     * Remove subreddits from subreddit library
      * 
      * Default: [ ]
      */
     removeSubreddit?: Array<string>;
 
     /**
-     * Custom subreddit libray when type is 'custom'.
+     * Custom subreddit libray when type is 'custom'
      * 
      * Default: [ ]
      */
@@ -45,7 +45,7 @@ export interface RedditImageFetcherOptions {
 
 export interface RedditImageFetcher {
     /**
-     * Fetch images.
+     * Fetch images
      * 
      * @param {Object} options The default options for the instance
      * @return {Array} array of images
