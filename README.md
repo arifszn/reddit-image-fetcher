@@ -146,7 +146,7 @@ RedditImageFetcher.fetch({
 
 | Property            |  Type   | Description                                               | Default |
 | :-----------        | :---:   | :-------------------------------------                    | :----:  |
-| type               | string  | <code>'meme'</code> \| <code>'wallpaper'</code> \| <code>'custom'</code>          | 'meme'       |
+| type               | string  | <code>'meme'</code> \| <code>'wallpaper'</code> \| <code>'custom'</code>          | <code>'meme'</code>       |
 | total               | number  | How many images to get. Max is 50                         | 1       |
 | subreddit        | [string]   | Custom subreddit libray                    |   [ ]   |
 | addSubreddit        | [string]   | Add subreddits to subreddit library                    | [ ]     |
