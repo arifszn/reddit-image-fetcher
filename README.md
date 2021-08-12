@@ -164,7 +164,7 @@ To contribute, clone this repo locally and commit your code on a new branch. Fee
 
 ## Support
 
-Show your ❤️ and support by giving a <a href="https://github.com/arifszn/reddit-image-fetcher">star</a>.
+Show your ❤️ and support by giving a star.
 
 
 ## License
