@@ -1,10 +1,10 @@
-var searchType = [
+const searchType = [
     'hot',
     'top',
     'rising'
 ];
 
-var memeSubreddit = [
+const memeSubreddit = [
     'memes',
     'AdviceAnimals',
     'AdviceAnimals+funny+memes',
@@ -46,7 +46,7 @@ var memeSubreddit = [
     'PerfectTiming'
 ];
 
-var wallpaperSubreddit = [
+const wallpaperSubreddit = [
     'wallpaper',
     'wallpapers',
     'iWallpaper',

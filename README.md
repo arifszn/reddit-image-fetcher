@@ -12,7 +12,6 @@
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
     <img src="https://img.shields.io/bundlephobia/min/reddit-image-fetcher"/>
     <a href="https://github.com/arifszn/reddit-image-fetcher/blob/master/LICENSE"><img src="https://img.shields.io/github/license/arifszn/reddit-image-fetcher"/></a>
-    <a href="https://arifszn.github.io/"><img src="https://img.shields.io/badge/author-arifszn-blueviolet" alt="Author arifszn"/></a>
 </p>
 
 <br/>
@@ -36,23 +35,11 @@ Reddit Image Fetcher is a JavaScript package that can fetch bulk images, memes o
 PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddit Image Fetcher</a>
 
 
-## Table of Contents
-
-* [Resources](#resources)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Result](#result)
-* [Options](#options)
-* [Contribute](#contribute)
-* [Thank You](#thank-you)
-* [Support](#support)
-* [License](#license)
-
-
 ## Resources
 
 - [Demo](https://memedb.netlify.app)
 - [Documentation](https://arifszn.github.io/reddit-image-fetcher)
+- [CodeSandbox](https://codesandbox.io/s/reddit-image-fetcher-53x89)
 
 
 # Installation
@@ -71,43 +58,53 @@ yarn add reddit-image-fetcher
 ## Usage
 
 Available function:
-- fetch()
+
+<details>
+<summary>fetch()</summary>
 
 ```js
+const RedditImageFetcher = require("reddit-image-fetcher");
 
-//use with await
-await redditImageFetcher.fetch({type: 'meme'}); //returns 1 meme 
-await redditImageFetcher.fetch({type: 'wallpaper'}); //returns 1 wallpaper
+// fetch 1 meme
+RedditImageFetcher.fetch({
+    type: 'meme'
+}).then(result => {
+    console.log(result);
+});
 
+// fetch 1 wallpaper
+RedditImageFetcher.fetch({
+    type: 'wallpaper'
+}).then(result => {
+    console.log(result);
+});
 
-//use with callback
-redditImageFetcher.fetch({type: 'meme'})
-.then(result => { }); //returns 1 meme
+// fetch 50 wallpapers
+RedditImageFetcher.fetch({
+    type: 'wallpaper',
+    total: 50
+}).then(result => {
+    console.log(result);
+});
 
-
-//options
-await redditImageFetcher.fetch({ type: 'wallpaper', total: 50 }); //returns 50 wallpapers 
- 
-await redditImageFetcher.fetch({
-    type: 'meme',
-    total: 50, 
-    addSubreddit: ['memes', 'funny'], 
-    removeSubreddit: ['dankmemes']
-}); //returns 50 memes by filtering
-
-
-//custom image fetch from given subreddits
-await redditImageFetcher.fetch({
+// fetch 50 cat images
+RedditImageFetcher.fetch({
     type: 'custom',
     total: 50, 
-    subreddit: ['cats', 'Catswhoyell', 'sleepingcats'] 
-}); //returns 50 cat images
+    subreddit: ['cats', 'Catswhoyell', 'sleepingcats']
+}).then(result => {
+    console.log(result);
+});
 ```
+
+</details>
 
 
 ## Result
 
-The functions are asynchronous and return array.
+<details>
+<summary>Sample Response</summary>
+
 ```
 [
   {
@@ -139,14 +136,17 @@ The functions are asynchronous and return array.
     upvoteRatio: 1.0
   }
 ]
+
 ```
+
+</details>
 
 
 ## Options
 
 | Property            |  Type   | Description                                               | Default |
 | :-----------        | :---:   | :-------------------------------------                    | :----:  |
-| type               | string  | meme, wallpaper or custom image to fetch                         | 'meme'       |
+| type               | string  | <code>'meme'</code> \| <code>'wallpaper'</code> \| <code>'custom'</code>          | 'meme'       |
 | total               | number  | How many images to get. Max is 50                         | 1       |
 | subreddit        | [string]   | Custom subreddit libray                    |   [ ]   |
 | addSubreddit        | [string]   | Add subreddits to subreddit library                    | [ ]     |
@@ -161,7 +161,6 @@ To contribute, clone this repo locally and commit your code on a new branch. Fee
 ## Thank You
 
 [![Stargazers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/stars/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/stargazers)
-[![Forkers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/forks/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/network/members)
 
 ## Support
 

@@ -10,6 +10,7 @@ const axios = require('axios');
 const randomNumber = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
+
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -21,10 +22,11 @@ const randomNumber = (min, max) => {
  * @return {Boolean}
  */
 const isImageUrl = (url, includeGif = true) => {
-    if (includeGif)
+    if (includeGif) {
         return !(url.includes('.gifv')) && (url.includes('.jpg') || url.includes('.png') || url.includes('.gif') || url.includes('.jpeg'));
-    else
+    } else {
         return !(url.includes('.gifv')) && (url.includes('.jpg') || url.includes('.png') || url.includes('.jpeg'));
+    }
 }
 
 /**
@@ -50,18 +52,18 @@ const getRequest = async (url) => {
  */
 const formatPost = (post, type) => {
     return {
-        id              : typeof post.id !== 'undefined' ? post.id : null,
-        type            : type,
-        title           : typeof post.title !== 'undefined' ? post.title : null,
-        postLink        : typeof post.id !== 'undefined' ?  'https://redd.it/' + post.id : null,
-        image           : typeof post.url !== 'undefined' ? post.url : null,
-        thumbnail       : typeof post.thumbnail !== 'undefined' ? post.thumbnail : null,
-        subreddit       : typeof post.subreddit !== 'undefined' ? post.subreddit : null,
-        NSFW            : typeof post.over_18 !== 'undefined' ? post.over_18 : null,
-        spoiler         : typeof post.spoiler !== 'undefined' ? post.spoiler : null,
-        createdUtc      : typeof post.created_utc !== 'undefined' ? post.created_utc : null,
-        upvotes         : typeof post.ups !== 'undefined' ? post.ups : null,
-        upvoteRatio     : typeof post.upvote_ratio !== 'undefined' ? post.upvote_ratio : null,
+        id: typeof post.id !== 'undefined' ? post.id : null,
+        type: type,
+        title: typeof post.title !== 'undefined' ? post.title : null,
+        postLink: typeof post.id !== 'undefined' ?  'https://redd.it/' + post.id : null,
+        image: typeof post.url !== 'undefined' ? post.url : null,
+        thumbnail: typeof post.thumbnail !== 'undefined' ? post.thumbnail : null,
+        subreddit: typeof post.subreddit !== 'undefined' ? post.subreddit : null,
+        NSFW: typeof post.over_18 !== 'undefined' ? post.over_18 : null,
+        spoiler: typeof post.spoiler !== 'undefined' ? post.spoiler : null,
+        createdUtc: typeof post.created_utc !== 'undefined' ? post.created_utc : null,
+        upvotes: typeof post.ups !== 'undefined' ? post.ups : null,
+        upvoteRatio: typeof post.upvote_ratio !== 'undefined' ? post.upvote_ratio : null,
     };
 }
 

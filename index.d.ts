@@ -1,6 +1,6 @@
 // Type definitions for Reddit Image Fetcher
 // Project https://github.com/arifszn/reddit-image-fetcher
-// Author: Ariful Alam <swazan.arif@gmail.com>
+// Author: MD. Ariful Alam <arifulalamszn@gmail.com>
 
 export type type = 'meme' | 'wallpaper' | 'custom';
 

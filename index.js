@@ -1,6 +1,6 @@
 const shuffle = require('shuffle-array');
 const utils = require('./utils');
-var config = require('./../config/index');
+const config = require('./config/index');
 
 const maxRetryLimit = 50;
 
@@ -60,7 +60,8 @@ const fetch = async (options = {}) => {
         
         return await getRandomPosts(parseInt(total), type, subreddit, searchLimit);
     } catch (error) {
-        throw Error(error);
+        console.error(error);
+        return [];
     }
 }
 
@@ -77,12 +78,18 @@ const fetch = async (options = {}) => {
 const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, fetchedPost = []) => {
     //retry limit check
     counter++;
-    if (counter == maxRetryLimit)
+
+    if (counter == maxRetryLimit) {
         throw Error('Maximum retry limit exceeded');
+    }
+
+    let response;
+
     try {
         //get request
-        let rand     = utils.randomNumber(0, subreddit.length);
-        var response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
+        let rand = utils.randomNumber(0, subreddit.length);
+
+        response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
         //retry if error occurs
         return await getRandomPosts(total, type, subreddit, searchLimit, counter);
@@ -90,12 +97,17 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
 
     //push image only post to post array
     let postArray = response.data.data.children;
+
     postArray.forEach(post => {
         let includeGif = true;
-        if (type === 'wallpaper')
+
+        if (type === 'wallpaper') {
             includeGif = false;
-        if (typeof post.data !== "undefined" && typeof post.data.url !== "undefined" && utils.isImageUrl(post.data.url, includeGif))
+        }
+            
+        if (typeof post.data !== "undefined" && typeof post.data.url !== "undefined" && utils.isImageUrl(post.data.url, includeGif)) {
             fetchedPost.push(utils.formatPost(post.data, type));
+        }
     });
 
     //if total is not reached, retry with already fetched data 
@@ -103,8 +115,9 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
         fetchedPost = await getRandomPosts(total, type, subreddit, searchLimit, counter, fetchedPost);
 
     //return result as array
-    if (total === 1)
+    if (total === 1) {
         return [shuffle.pick(fetchedPost, { 'picks': total })];
+    }
 
     return shuffle.pick(fetchedPost, { 'picks': total });
 }
