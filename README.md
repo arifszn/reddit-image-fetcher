@@ -42,7 +42,7 @@ PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddi
 - [CodeSandbox](https://codesandbox.io/s/reddit-image-fetcher-53x89)
 
 
-# Installation
+## Installation
 
 Install via <a href="https://www.npmjs.com/package/reddit-image-fetcher">NPM</a>
 ```
