@@ -11,7 +11,7 @@
 <p align="center">
     <a href="https://www.npmjs.com/package/reddit-image-fetcher"><img src="https://img.shields.io/npm/v/reddit-image-fetcher"/></a>
     <img src="https://img.shields.io/bundlephobia/min/reddit-image-fetcher"/>
-    <a href="https://github.com/arifszn/reddit-image-fetcher/blob/master/LICENSE"><img src="https://img.shields.io/github/license/arifszn/reddit-image-fetcher"/></a>
+    <a href="https://github.com/arifszn/reddit-image-fetcher/blob/main/LICENSE"><img src="https://img.shields.io/github/license/arifszn/reddit-image-fetcher"/></a>
 </p>
 
 <br/>
