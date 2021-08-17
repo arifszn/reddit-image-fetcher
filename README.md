@@ -32,7 +32,7 @@ Reddit Image Fetcher is a JavaScript package that can fetch bulk images, memes o
 - Customizable
 - Lightweight <small><code><20KB</code></small>
 
-PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddit Image Fetcher</a>
+> PHP version: <a href="https://github.com/arifszn/reddit-image-fetcher-php">Reddit Image Fetcher</a>
 
 
 ## Resources
