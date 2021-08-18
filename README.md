@@ -87,11 +87,21 @@ RedditImageFetcher.fetch({
     console.log(result);
 });
 
-// fetch 50 cat images
+// fetch 50 cat images from custom subreddit library
 RedditImageFetcher.fetch({
     type: 'custom',
     total: 50, 
     subreddit: ['cats', 'Catswhoyell', 'sleepingcats']
+}).then(result => {
+    console.log(result);
+});
+
+// fetch 50 memes by adding two subreddits and removing 1 subreddit from default subreddit library
+RedditImageFetcher.fetch({
+    type: 'custom',
+    total: 50, 
+    addSubreddit: ['memes', 'funny'],
+    removeSubreddit: ['dankmemes']
 }).then(result => {
     console.log(result);
 });
