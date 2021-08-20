@@ -157,10 +157,10 @@ RedditImageFetcher.fetch({
 | Property            |  Type   | Description                                               | Default |
 | :-----------        | :---:   | :-------------------------------------                    | :----:  |
 | type               | string  | <code>'meme'</code> \| <code>'wallpaper'</code> \| <code>'custom'</code>          | <code>'meme'</code>       |
-| total               | number  | How many images to get. Max is 50                         | 1       |
-| subreddit        | [string]   | Custom subreddit libray                    |   [ ]   |
-| addSubreddit        | [string]   | Add subreddits to subreddit library                    | [ ]     |
-| removeSubreddit     | [string]   | Remove subreddits from subreddit library               | [ ]     |
+| total               | number  | How many images to get. Max is 50                         | <code>1</code>       |
+| subreddit        | [string]   | Custom subreddit libray                    |   <code>[ ]</code>   |
+| addSubreddit        | [string]   | Add subreddits to subreddit library                    | <code>[ ]</code>     |
+| removeSubreddit     | [string]   | Remove subreddits from subreddit library               | <code>[ ]</code>     |
 
 
 ## Contribute
@@ -174,7 +174,7 @@ To contribute, clone this repo locally and commit your code on a new branch. Fee
 
 ## Support
 
-Show your ❤️ and support by giving a star.
+Show your ❤️ and support by giving a ⭐.
 
 
 ## License
