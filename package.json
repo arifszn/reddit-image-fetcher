@@ -1,6 +1,6 @@
 {
     "name": "reddit-image-fetcher",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "description": "A JavaScript package for fetching reddit images, memes, wallpapers and more",
     "main": "index.js",
     "typings": "./index.d.ts",
