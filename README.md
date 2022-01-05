@@ -57,11 +57,6 @@ yarn add reddit-image-fetcher
 
 ## Usage
 
-Available function:
-
-<details>
-<summary>fetch()</summary>
-
 ```js
 const RedditImageFetcher = require("reddit-image-fetcher");
 
@@ -107,15 +102,9 @@ RedditImageFetcher.fetch({
 });
 ```
 
-</details>
+## Sample Response
 
-
-## Result
-
-<details>
-<summary>Sample Response</summary>
-
-```
+```js
 [
   {
     id: "hfh51v",
@@ -179,5 +168,4 @@ Show your ❤️ and support by giving a ⭐.
 
 ## License
 
-<p>MIT Licensed.</p>
-<p>Copyright © <a href="https://arifszn.github.io">MD. Ariful Alam</a> 2021.</p>
+**Reddit Image Fetcher** is licensed under the [MIT License](https://github.com/arifszn/reddit-image-fetcher/blob/main/LICENSE).
