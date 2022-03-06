@@ -1,5 +1,5 @@
 const shuffle = require('shuffle-array');
-const utils = require('../utils');
+const utils = require('./utils');
 const lib = require('./lib/index');
 
 const maxRetryLimit = 50;
