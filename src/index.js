@@ -1,6 +1,6 @@
 const shuffle = require('shuffle-array');
 const utils = require('../utils');
-const config = require('../config/index');
+const config = require('./config/index');
 
 const maxRetryLimit = 50;
 
