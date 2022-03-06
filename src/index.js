@@ -1,6 +1,6 @@
 const shuffle = require('shuffle-array');
 const utils = require('../utils');
-const config = require('./config/index');
+const lib = require('./lib/index');
 
 const maxRetryLimit = 50;
 
@@ -15,12 +15,12 @@ const fetch = async (options = {}) => {
         let searchLimit = 75;
         let total = 1;
         let type = 'meme';
-        let subreddit = config.memeSubreddit;
+        let subreddit = lib.memeSubreddit;
 
         if (typeof options === "object" && typeof options.type !== 'undefined') {
             if (options.type === 'wallpaper') {
                 type = 'wallpaper';
-                subreddit = config.wallpaperSubreddit;
+                subreddit = lib.wallpaperSubreddit;
             } else if (options.type === 'custom') {
                 type = 'custom';
                 subreddit = [];
@@ -89,7 +89,7 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
         //get request
         let rand = utils.randomNumber(0, subreddit.length);
 
-        response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
+        response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(lib.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
         //retry if error occurs
         return await getRandomPosts(total, type, subreddit, searchLimit, counter);
