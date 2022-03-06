@@ -1,9 +1,15 @@
+/**
+ * Reddit search type
+ */
 const searchType = [
     'hot',
     'top',
     'rising'
 ];
 
+/**
+ * List of meme subreddits
+ */
 const memeSubreddit = [
     'memes',
     'AdviceAnimals',
@@ -46,6 +52,9 @@ const memeSubreddit = [
     'PerfectTiming'
 ];
 
+/**
+ * List of wallpaper subreddits
+ */
 const wallpaperSubreddit = [
     'wallpaper',
     'wallpapers',

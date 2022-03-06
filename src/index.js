@@ -1,11 +1,11 @@
 const shuffle = require('shuffle-array');
 const utils = require('./utils');
-const lib = require('./lib/index');
+const lib = require('./lib');
 
 const maxRetryLimit = 50;
 
 /**
- * Fetch images.
+ * Fetch image.
  * 
  * @param {Object} options The default options for the instance
  * @return {Array} array of images
@@ -45,7 +45,9 @@ const fetch = async (options = {}) => {
             if (typeof options.removeSubreddit !== 'undefined') {
                 options.removeSubreddit.forEach(element => {
                     let index = subreddit.indexOf(element);
-                    if (index !== -1) subreddit.splice(index, 1);
+                    if (index !== -1) {
+                        subreddit.splice(index, 1);
+                    }
                 });
             }
 
@@ -66,7 +68,7 @@ const fetch = async (options = {}) => {
 }
 
 /**
- * Get n random posts where n = total
+ * Get n random posts where n = total.
  * 
  * @param {number} total 
  * @param {String} type
@@ -76,7 +78,7 @@ const fetch = async (options = {}) => {
  * @param {Array} fetchedPost
  */
 const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, fetchedPost = []) => {
-    //retry limit check
+    //  check retry limit
     counter++;
 
     if (counter == maxRetryLimit) {
@@ -86,16 +88,16 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
     let response;
 
     try {
-        //get request
+        // get request
         let rand = utils.randomNumber(0, subreddit.length);
 
         response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(lib.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
-        //retry if error occurs
+        // retry if error occurs
         return await getRandomPosts(total, type, subreddit, searchLimit, counter);
     }
 
-    //push image only post to post array
+    // push image only post to post array
     let postArray = response.data.data.children;
 
     postArray.forEach(post => {
@@ -110,11 +112,11 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
         }
     });
 
-    //if total is not reached, retry with already fetched data 
+    // if total is not reached, retry with already fetched data 
     if (fetchedPost.length < total)
         fetchedPost = await getRandomPosts(total, type, subreddit, searchLimit, counter, fetchedPost);
 
-    //return result as array
+    // return result as array
     if (total === 1) {
         return [shuffle.pick(fetchedPost, { 'picks': total })];
     }

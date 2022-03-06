@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 /**
- * Get random number from min and max range. Min is inclusive, Max is exclusive
+ * Get random number from min and max range. Min is inclusive, Max is exclusive.
  * 
  * @param {Number} min 
  * @param {Number} max
@@ -15,7 +15,7 @@ const randomNumber = (min, max) => {
 }
 
 /**
- * Check if url is image url
+ * Check if url is image url.
  * 
  * @param {String} url
  * @param {boolean} includeGif | should include gif
@@ -30,7 +30,7 @@ const isImageUrl = (url, includeGif = true) => {
 }
 
 /**
- * Make a get request
+ * Make a get request.
  * 
  * @param {String} url
  * @return Axios response object
@@ -44,7 +44,7 @@ const getRequest = async (url) => {
 }
 
 /**
- * Format the raw post
+ * Format the raw post.
  * 
  * @param {Object} post
  * @param {string} type
