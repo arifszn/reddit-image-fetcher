@@ -1,19 +1,20 @@
 // Type definitions for Reddit Image Fetcher
 // Project https://github.com/arifszn/reddit-image-fetcher
-// Author: MD. Ariful Alam <arifulalamszn@gmail.com>
+// Author: Ariful Alam <arifulalamszn@gmail.com>
 
 export type type = 'meme' | 'wallpaper' | 'custom';
 
 export interface RedditImageFetcherOptions {
+    
     /**
-     * Image type
+     * Image type.
      * 
      * Default: 'meme'
      */
     type?: type;
 
     /**
-     * How many images to get
+     * How many images to get.
      * 
      * Default: 1
      * 
@@ -22,21 +23,21 @@ export interface RedditImageFetcherOptions {
     total?: number;
 
     /**
-     * Add subreddits to subreddit library
+     * Add subreddits to subreddit library.
      * 
      * Default: [ ]
      */
     addSubreddit?: Array<string>;
 
     /**
-     * Remove subreddits from subreddit library
+     * Remove subreddits from subreddit library.
      * 
      * Default: [ ]
      */
     removeSubreddit?: Array<string>;
 
     /**
-     * Custom subreddit libray when type is 'custom'
+     * Custom subreddit library when type is 'custom'.
      * 
      * Default: [ ]
      */
@@ -45,7 +46,7 @@ export interface RedditImageFetcherOptions {
 
 export interface RedditImageFetcher {
     /**
-     * Fetch images
+     * Fetch image.
      * 
      * @param {Object} options The default options for the instance
      * @return {Array} array of images
