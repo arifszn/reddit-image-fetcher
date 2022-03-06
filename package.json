@@ -3,7 +3,7 @@
     "version": "2.0.10",
     "description": "A JavaScript package for fetching reddit images, memes, wallpapers and more",
     "main": "./src/index.js",
-    "typings": "./index.d.ts",
+    "typings": "./src/index.d.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
