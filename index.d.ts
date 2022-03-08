@@ -36,7 +36,7 @@ export interface RedditImageFetcherOptions {
     removeSubreddit?: Array<string>;
 
     /**
-     * Custom subreddit libray when type is 'custom'
+     * Custom subreddit library when type is 'custom'
      * 
      * Default: [ ]
      */
