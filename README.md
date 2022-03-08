@@ -157,13 +157,11 @@ RedditImageFetcher.fetch({
 To contribute, clone this repo locally and commit your code on a new branch. Feel free to create an issue or make a pull request.
 
 
-## Thank You
-
-[![Stargazers repo roster for @arifszn/reddit-image-fetcher](https://reporoster.com/stars/arifszn/reddit-image-fetcher)](https://github.com/arifszn/reddit-image-fetcher/stargazers)
-
 ## Support
 
-Show your ❤️ and support by giving a ⭐.
+<a href="https://www.buymeacoffee.com/arifszn" target="_blank">
+  <img src="https://raw.githubusercontent.com/arifszn/arifszn/main/assets/bmc-button.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
+</a>
 
 
 ## License
