@@ -16,6 +16,7 @@ const fetch = async (options = {}) => {
         let total = 1;
         let type = 'meme';
         let subreddit = config.memeSubreddit;
+        let allowNsfw = true;
 
         if (typeof options === "object" && typeof options.type !== 'undefined') {
             if (options.type === 'wallpaper') {
@@ -38,6 +39,12 @@ const fetch = async (options = {}) => {
                 }
             }
 
+            if (typeof options.allowNsfw !== 'undefined') {
+                if (options.allowNsfw === false) {
+                    allowNsfw = false;
+                };
+            };
+
             if (typeof options.addSubreddit !== 'undefined') {
                 subreddit = subreddit.concat(options.addSubreddit);
             }
@@ -58,7 +65,7 @@ const fetch = async (options = {}) => {
             throw Error('Can not fetch from empty subreddit library');
         }
         
-        return await getRandomPosts(parseInt(total), type, subreddit, searchLimit);
+        return await getRandomPosts(parseInt(total), type, subreddit, searchLimit, allowNsfw);
     } catch (error) {
         console.error(error);
         return [];
@@ -74,8 +81,9 @@ const fetch = async (options = {}) => {
  * @param {number} searchLimit 
  * @param {number} counter 
  * @param {Array} fetchedPost
+ * @param {Boolean} allowNsfw
  */
-const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, fetchedPost = []) => {
+const getRandomPosts = async (total, type, subreddit, searchLimit, allowNsfw, counter = 0, fetchedPost = []) => {
     //retry limit check
     counter++;
 
@@ -92,7 +100,7 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
         response = await utils.getRequest('https://api.reddit.com/r/' + subreddit[rand] + '/' + shuffle.pick(config.searchType, { 'picks': 1 }) + '?limit=' + searchLimit);
     } catch (error) {
         //retry if error occurs
-        return await getRandomPosts(total, type, subreddit, searchLimit, counter);
+        return await getRandomPosts(total, type, subreddit, searchLimit, counter, allowNsfw);
     }
 
     //push image only post to post array
@@ -106,13 +114,19 @@ const getRandomPosts = async (total, type, subreddit, searchLimit, counter = 0, 
         }
             
         if (typeof post.data !== "undefined" && typeof post.data.url !== "undefined" && utils.isImageUrl(post.data.url, includeGif)) {
-            fetchedPost.push(utils.formatPost(post.data, type));
-        }
+            if (post.data.over_18) {
+                if (allowNsfw) {
+                    fetchedPost.push(utils.formatPost(post.data, type));
+                };
+            } else {
+                fetchedPost.push(utils.formatPost(post.data, type));
+            };
+        };
     });
 
     //if total is not reached, retry with already fetched data 
     if (fetchedPost.length < total)
-        fetchedPost = await getRandomPosts(total, type, subreddit, searchLimit, counter, fetchedPost);
+        fetchedPost = await getRandomPosts(total, type, subreddit, searchLimit, allowNsfw, counter, fetchedPost);
 
     //return result as array
     if (total === 1) {

@@ -41,6 +41,13 @@ export interface RedditImageFetcherOptions {
      * Default: [ ]
      */
     subreddit?: Array<string>;
+
+    /**
+     * Allow NSFW results
+     * 
+     * Default: true
+     */
+     allowNsfw?: boolean;
 }
 
 export interface RedditImageFetcher {
