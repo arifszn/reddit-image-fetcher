@@ -47,7 +47,7 @@ export interface RedditImageFetcherOptions {
      * 
      * Default: true
      */
-     allowNsfw?: boolean;
+     allowNSFW?: boolean;
 }
 
 export interface RedditImageFetcher {
