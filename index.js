@@ -16,7 +16,7 @@ const fetch = async (options = {}) => {
         let total = 1;
         let type = 'meme';
         let subreddit = config.memeSubreddit;
-        let allowNsfw = false;
+        let allowNsfw = true;
 
         if (typeof options === "object" && typeof options.type !== 'undefined') {
             if (options.type === 'wallpaper') {

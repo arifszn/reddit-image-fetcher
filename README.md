@@ -150,7 +150,7 @@ RedditImageFetcher.fetch({
 | subreddit        | [string]   | Custom subreddit library                    |   <code>[ ]</code>   |
 | addSubreddit        | [string]   | Add subreddits to subreddit library                    | <code>[ ]</code>     |
 | removeSubreddit     | [string]   | Remove subreddits from subreddit library               | <code>[ ]</code>     |
-| allowNsfw     | boolean   | Allow NSFW results              | <code>false</code>     |
+| allowNSFW    | boolean   | Allow NSFW results              | <code>false</code>     |
 
 
 ## Contribute
