@@ -40,8 +40,8 @@ const fetch = async (options = {}) => {
             }
 
             if (typeof options.allowNsfw !== 'undefined') {
-                if (options.allowNsfw === true) {
-                    allowNsfw = true;
+                if (options.allowNsfw === false) {
+                    allowNsfw = false;
                 };
             };
 
