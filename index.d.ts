@@ -48,6 +48,13 @@ export interface RedditImageFetcherOptions {
      * Default: true
      */
      allowNSFW?: boolean;
+
+     /**
+     * Sort popularity of results
+     * 
+     * Default: 'none'
+     */
+      sort?: string;
 }
 
 export interface RedditImageFetcher {

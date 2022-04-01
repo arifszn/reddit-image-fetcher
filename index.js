@@ -17,6 +17,7 @@ const fetch = async (options = {}) => {
     let type = 'meme';
     let subreddit = config.memeSubreddit;
     let allowNSFW = true;
+    let sort;
 
     if (typeof options === 'object' && typeof options.type !== 'undefined') {
       if (options.type === 'wallpaper') {
@@ -45,6 +46,14 @@ const fetch = async (options = {}) => {
         }
       }
 
+      if (typeof options.sort !== 'undefined') {
+        if (options.sort === 'bottom') {
+          sort = 'bottom';
+        } else if (options.sort === 'top') {
+          sort = 'top';
+        }
+      }
+
       if (typeof options.addSubreddit !== 'undefined') {
         subreddit = subreddit.concat(options.addSubreddit);
       }
@@ -70,7 +79,8 @@ const fetch = async (options = {}) => {
       type,
       subreddit,
       searchLimit,
-      allowNSFW
+      allowNSFW,
+      sort
     );
   } catch (error) {
     console.error(error);
@@ -88,6 +98,7 @@ const fetch = async (options = {}) => {
  * @param {number} counter
  * @param {Array} fetchedPost
  * @param {Boolean} allowNSFW
+ * @param {String} sort
  */
 const getRandomPosts = async (
   total,
@@ -95,6 +106,7 @@ const getRandomPosts = async (
   subreddit,
   searchLimit,
   allowNSFW,
+  sort,
   counter = 0,
   fetchedPost = []
 ) => {
@@ -127,7 +139,8 @@ const getRandomPosts = async (
       subreddit,
       searchLimit,
       counter,
-      allowNSFW
+      allowNSFW,
+      sort
     );
   }
 
@@ -156,6 +169,18 @@ const getRandomPosts = async (
     }
   });
 
+  if (sort === 'top') {
+    fetchedPost.sort(function (a, b) {
+      return a.upvoteRatio - b.upvoteRatio;
+    });
+
+    fetchedPost.reverse();
+  } else if (sort === 'bottom') {
+    fetchedPost.sort(function (a, b) {
+      return a.upvoteRatio - b.upvoteRatio;
+    });
+  }
+
   //if total is not reached, retry with already fetched data
   if (fetchedPost.length < total)
     fetchedPost = await getRandomPosts(
@@ -164,16 +189,25 @@ const getRandomPosts = async (
       subreddit,
       searchLimit,
       allowNSFW,
+      sort,
       counter,
       fetchedPost
     );
 
   //return result as array
   if (total === 1) {
-    return [shuffle.pick(fetchedPost, { picks: total })];
+    if (!sort) {
+      return [shuffle.pick(fetchedPost, { picks: total })];
+    } else {
+      return fetchedPost[0];
+    }
   }
 
-  return shuffle.pick(fetchedPost, { picks: total });
+  if (!sort) {
+    return shuffle.pick(fetchedPost, { picks: total });
+  } else {
+    return fetchedPost;
+  }
 };
 
 module.exports.fetch = fetch;
