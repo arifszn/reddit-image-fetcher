@@ -85,6 +85,7 @@ RedditImageFetcher.fetch({
 // fetch 50 cat images from custom subreddit library
 RedditImageFetcher.fetch({
     type: 'custom',
+    sort: 'bottom',
     total: 50, 
     subreddit: ['cats', 'Catswhoyell', 'sleepingcats']
 }).then(result => {
@@ -95,6 +96,7 @@ RedditImageFetcher.fetch({
 RedditImageFetcher.fetch({
     type: 'custom',
     total: 50, 
+    sort: 'top',
     addSubreddit: ['memes', 'funny'],
     removeSubreddit: ['dankmemes']
 }).then(result => {
@@ -151,6 +153,7 @@ RedditImageFetcher.fetch({
 | addSubreddit        | [string]   | Add subreddits to subreddit library                    | <code>[ ]</code>     |
 | removeSubreddit     | [string]   | Remove subreddits from subreddit library               | <code>[ ]</code>     |
 | allowNSFW    | boolean   | Allow NSFW results              | <code>true</code>     |
+| sort    | string   | Sort results by upvote ratio           | <code>'none'</code>     |
 
 
 ## Contribute
