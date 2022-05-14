@@ -17,6 +17,7 @@ const fetch = async (options = {}) => {
     let type = 'meme';
     let subreddit = config.memeSubreddit;
     let allowNSFW = true;
+    let sort = null;
 
     if (typeof options === 'object' && typeof options.type !== 'undefined') {
       if (options.type === 'wallpaper') {
@@ -45,6 +46,10 @@ const fetch = async (options = {}) => {
         }
       }
 
+      if (typeof options.sort !== 'undefined') {
+        sort = options.sort;
+      }
+
       if (typeof options.addSubreddit !== 'undefined') {
         subreddit = subreddit.concat(options.addSubreddit);
       }
@@ -70,7 +75,8 @@ const fetch = async (options = {}) => {
       type,
       subreddit,
       searchLimit,
-      allowNSFW
+      allowNSFW,
+      sort
     );
   } catch (error) {
     console.error(error);
@@ -85,9 +91,10 @@ const fetch = async (options = {}) => {
  * @param {String} type
  * @param {Array} subreddit
  * @param {number} searchLimit
+ * @param {Boolean} allowNSFW
+ * @param {String} sort
  * @param {number} counter
  * @param {Array} fetchedPost
- * @param {Boolean} allowNSFW
  */
 const getRandomPosts = async (
   total,
@@ -95,6 +102,7 @@ const getRandomPosts = async (
   subreddit,
   searchLimit,
   allowNSFW,
+  sort,
   counter = 0,
   fetchedPost = []
 ) => {
@@ -115,7 +123,7 @@ const getRandomPosts = async (
       'https://api.reddit.com/r/' +
         subreddit[rand] +
         '/' +
-        shuffle.pick(config.searchType, { picks: 1 }) +
+        (sort ? sort : shuffle.pick(config.searchType, { picks: 1 })) +
         '?limit=' +
         searchLimit
     );
@@ -127,7 +135,8 @@ const getRandomPosts = async (
       subreddit,
       searchLimit,
       counter,
-      allowNSFW
+      allowNSFW,
+      sort
     );
   }
 
@@ -164,6 +173,7 @@ const getRandomPosts = async (
       subreddit,
       searchLimit,
       allowNSFW,
+      sort,
       counter,
       fetchedPost
     );
