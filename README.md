@@ -42,7 +42,7 @@
     <img src="https://arifszn.github.io/reddit-image-fetcher/img/preview.gif" alt="Preview"/>
   </a>
   <br/>
-  <a href="#arifszn"><img src="https://arifszn.netlify.app/assets/img/drop-shadow.png" width="60%" alt="Shadow"/></a>
+  <a href="#arifszn"><img src="https://github.com/user-attachments/assets/54106eb3-70dd-422a-9243-45cf8e65c17b" width="60%" alt="Shadow"/></a>
 </p>
 
 Reddit Image Fetcher is a JavaScript package that can fetch bulk images, memes or wallpapers. Supports node, react and other any JavaScript language.
